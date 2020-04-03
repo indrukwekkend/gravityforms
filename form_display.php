@@ -1341,7 +1341,7 @@ class GFFormDisplay {
 		$field_values_str = is_array( $field_values ) ? http_build_query( $field_values ) : $field_values;
 		$files_input      = '';
 		if ( GFCommon::has_multifile_fileupload_field( $form ) || ! empty( RGFormsModel::$uploaded_files[ $form_id ] ) ) {
-			$files       = ! empty( RGFormsModel::$uploaded_files[ $form_id ] ) ? GFCommon::json_encode( RGFormsModel::$uploaded_files[ $form_id ] ) : '';
+			$files       = ! empty( RGFormsModel::$uploaded_files[ $form_id ] ) ? json_encode( RGFormsModel::$uploaded_files[ $form_id ], JSON_UNESCAPED_UNICODE ) : '';
 			$files_input = "<input type='hidden' name='gform_uploaded_files' id='gform_uploaded_files_{$form_id}' value='" . str_replace( "'", '&#039;', $files ) . "' />";
 		}
 		$save_inputs = '';
